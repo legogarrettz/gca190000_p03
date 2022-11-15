@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs" />
     <Compile Include="Assets\InputSystem\StarterAssetsInputs.cs" />
+    <Compile Include="Assets\Scripts\Garrett_Scripts\Comp_CameraContoller.cs" />
     <Compile Include="Assets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs" />
     <Compile Include="Assets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs" />
     <Compile Include="Assets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs" />
@@ -66,7 +67,7 @@
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\ThirdPersonController.cs" />
     <Compile Include="Assets\Scripts\Garrett_Scripts\Comp_PlayerInputs.cs" />
-    <Compile Include="Assets\Scripts\Garrett_Scripts\Comp_CameraContoller.cs" />
+    <Compile Include="Assets\Scripts\Garrett_Scripts\Comp_CharacterController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -713,6 +714,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="MK.MeshUtility.csproj">
+      <Project>{8D8A1AD4-5C2A-ED07-6C0C-27F0ECB8F47A}</Project>
+      <Name>MK.MeshUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="MK.MKTextureChannelPacker.csproj">
+      <Project>{17BD1334-8F61-9AAD-4BB0-DBF812E39BCD}</Project>
+      <Name>MK.MKTextureChannelPacker</Name>
+    </ProjectReference>
+    <ProjectReference Include="MK.Toon.Editor.csproj">
+      <Project>{C535D1FF-C943-66F1-9944-BEE3D96CF657}</Project>
+      <Name>MK.Toon.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="MK.RampCreator.csproj">
+      <Project>{42EEE4F3-2A7D-1089-12B7-3E210EABDE49}</Project>
+      <Name>MK.RampCreator</Name>
+    </ProjectReference>
+    <ProjectReference Include="MK.Toon.csproj">
+      <Project>{6E7C48E0-087F-5253-2545-F94F4C1560A5}</Project>
+      <Name>MK.Toon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -689,6 +689,17 @@ PlayerSettings:
   scriptingDefineSymbols:
     1: STARTER_ASSETS_PACKAGES_CHECKED
     7: STARTER_ASSETS_PACKAGES_CHECKED
+    13: 
+    14: 
+    19: 
+    21: 
+    25: 
+    27: 
+    28: 
+    29: 
+    30: 
+    32: 
+    33: 
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
