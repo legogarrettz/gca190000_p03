@@ -52,12 +52,12 @@ namespace HamJoyGames
             if (_strafing)
             {
                 _sprinting = _inputs.Sprint.PressedDown() && (_moveInputVector != Vector3.zero);
-                _strafing = _inputs.Aim.Pressed() && !_sprinting;
+                _strafing = _inputs.LockOn.Pressed() && !_sprinting;
             }
             else
             {
                 _sprinting = _inputs.Sprint.Pressed() && (_moveInputVector != Vector3.zero);
-                _strafing = _inputs.Aim.PressedDown() && !_sprinting;
+                _strafing = _inputs.LockOn.PressedDown() && !_sprinting;
             }
 
 
@@ -101,6 +101,13 @@ namespace HamJoyGames
             _animator.SetFloat("Strafing", _strafeParameter);
             _animator.SetFloat("StrafingX", Mathf.Round(_strafeParametersXZ.x * 100f) / 100f);
             _animator.SetFloat("StrafingZ", Mathf.Round(_strafeParametersXZ.z * 100f) / 100f);
+
+
+            //Request Lock On
+            if (_inputs.LockOn.PressedDown())
+            {
+                _cameraController.ToggleLockOn(!_cameraController.LockedOn);
+            }
 
 
 
