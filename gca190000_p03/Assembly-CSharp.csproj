@@ -65,9 +65,11 @@
     <Compile Include="Assets\Mobile\Scripts\VirtualInputs\UIVirtualTouchZone.cs" />
     <Compile Include="Assets\Scripts\BasicRigidBodyPush.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\Garrett_Scripts\Comp_CharacterController.cs" />
     <Compile Include="Assets\Scripts\ThirdPersonController.cs" />
     <Compile Include="Assets\Scripts\Garrett_Scripts\Comp_PlayerInputs.cs" />
-    <Compile Include="Assets\Scripts\Garrett_Scripts\Comp_CharacterController.cs" />
+    <Compile Include="Assets\Scripts\Garrett_Scripts\ITargetable.cs" />
+    <Compile Include="Assets\Scripts\Garrett_Scripts\Test_Targetable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

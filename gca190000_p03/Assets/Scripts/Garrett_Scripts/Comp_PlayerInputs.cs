@@ -5,7 +5,7 @@ using UnityEngine;
 namespace HamJoyGames
 {
     [System.Serializable]
-    public class Input
+    public class AlexInput
     {
         public KeyCode primary;
         public KeyCode alternate;
@@ -27,12 +27,12 @@ namespace HamJoyGames
     }
     public class Comp_PlayerInputs : MonoBehaviour
     {
-        public Input Forward;
-        public Input Backward;
-        public Input Right;
-        public Input Left;
-        public Input Sprint;
-        public Input LockOn;
+        public AlexInput Forward;
+        public AlexInput Backward;
+        public AlexInput Right;
+        public AlexInput Left;
+        public AlexInput Sprint;
+        public AlexInput LockOn;
 
         public int MoveAxisForwardRaw
         {

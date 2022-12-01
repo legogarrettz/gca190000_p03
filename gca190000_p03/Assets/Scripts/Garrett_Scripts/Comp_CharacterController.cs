@@ -7,6 +7,10 @@ namespace HamJoyGames
 {
     public class Comp_CharacterController : MonoBehaviour
     {
+        public AudioSource source;
+        public AudioClip clip1;
+
+
         [Header("Movement")]
         [SerializeField] private float _walkSpeed = 2f;
         [SerializeField] private float _runSpeed = 6f;
@@ -49,22 +53,17 @@ namespace HamJoyGames
 
             Vector3 _moveInputVectorOriented = _cameraPLanarRotation * _moveInputVector.normalized;
 
-            if (_strafing)
-            {
-                _sprinting = _inputs.Sprint.PressedDown() && (_moveInputVector != Vector3.zero);
-                _strafing = _inputs.LockOn.Pressed() && !_sprinting;
-            }
-            else
-            {
-                _sprinting = _inputs.Sprint.Pressed() && (_moveInputVector != Vector3.zero);
-                _strafing = _inputs.LockOn.PressedDown() && !_sprinting;
-            }
+            _strafing = _cameraController.LockedOn;
+            if (_strafing) { _sprinting = _inputs.Sprint.PressedDown() && (_moveInputVector != Vector3.zero); }
+            else           { _sprinting = _inputs.Sprint.Pressed() && (_moveInputVector != Vector3.zero); }
+            if (_sprinting)
+                _cameraController.ToggleLockOn(false);
 
 
             //Move Speed
-            if(_sprinting) { _targetSpeed = _moveInputVector != Vector3.zero ? _sprintSpeed : 0; }
-            else if (_strafing) { _targetSpeed = _moveInputVector != Vector3.zero ? _walkSpeed : 0; }
-            else                         { _targetSpeed = _moveInputVector != Vector3.zero ? _runSpeed : 0; }
+            if      (_sprinting)    { _targetSpeed = _moveInputVector != Vector3.zero ? _sprintSpeed : 0; }
+            else if (_strafing)     { _targetSpeed = _moveInputVector != Vector3.zero ? _walkSpeed : 0; }
+            else                    { _targetSpeed = _moveInputVector != Vector3.zero ? _runSpeed : 0; }
             _newSpeed = Mathf.Lerp(_newSpeed, _targetSpeed, Time.deltaTime * _moveSharpness);
 
             //Velocity
@@ -75,7 +74,11 @@ namespace HamJoyGames
             //Rotaion
             if (_strafing)
             {
-                _targetRotation = Quaternion.LookRotation(_cameraPlanarDirection);
+                Vector3 _toTarget = _cameraController.Target.TargetTransform.position - transform.position;
+                Vector3 _planarToTarget = Vector3.ProjectOnPlane(_toTarget, Vector3.up);
+
+
+                _targetRotation = Quaternion.LookRotation(_planarToTarget);
                 _newRotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _rotationSharpness);
                 transform.rotation = _newRotation;
             }
@@ -104,10 +107,19 @@ namespace HamJoyGames
 
 
             //Request Lock On
-            if (_inputs.LockOn.PressedDown())
+            // if (_inputs.LockOn.PressedDown())
+            //    Debug.Log("Locked On");
+            //   _cameraController.ToggleLockOn(!_cameraController.LockedOn);
+
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
+                Debug.Log("LockOn");
+                source.PlayOneShot(clip1);
                 _cameraController.ToggleLockOn(!_cameraController.LockedOn);
             }
+
+            
+
 
 
 
